@@ -58,7 +58,8 @@ Set the context and check the files. You should see four files as result of list
 USE ROLE ACCOUNTADMIN;
 USE DATABASE LLM;
 USE SCHEMA RAG;
-x
+USE WAREHOUSE MEDIUM;
+
 -------------------------------------------------------------
 ------- Check the files that you uploaded to stage ---------
 list @repair_manuals;
