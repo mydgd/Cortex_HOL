@@ -48,6 +48,7 @@ Download the four repair manuals needed from github.
 
 ![image](images/image4.png)
 
+##
 ## **2. Create Cortex Service for Repair Manuals**
 In this step, we will parse the uploaded manuals and extract text in order to index with Cortex Search Engine.
 
@@ -136,6 +137,7 @@ SELECT PARSE_JSON(
 ```
 
 Let’s create a function to search the chunks and process results with an LLM to create contextualized responses. This function will find the most relevant chunk and will also convert it into a meaningful response.  
+
 Please note that, we are using ***mixtral-8x7b*** as LLM model in below code. You can use different models like Llama or Gemini. All you have to do is to change the model name in the SQL.
 
 ```
@@ -160,7 +162,6 @@ select * from table(REPAIR_MANUALS_LLM($prompt, $search_prompt));
 ```
 
 ## 
-
 ## **3. Create Cortex Service for Historical Repair Logs**
 
 This time instead of using PDF files, we will generate a historical log table and create a service on this table.
@@ -336,6 +337,7 @@ select PROBLEM_REPORTED,
 from repair_logs;
 ```
 
+##
 ## **4. Combined Logs and Manuals**
 
 Up to this point we have loaded both repair manuals and repair logs. Now we need to combine them so we can feed them to the LLM and get the best answer of the two combined texts. This will generate the most accurate answer for our questions around how to repair our little robot.
@@ -382,6 +384,7 @@ SELECT * FROM TABLE(COMBINED_REPAIR_LLM($prompt, $search_prompt));
 
 ```
 
+##
 ## **5. Streamlit App**
 
 You are almost there, if you have made it this far you have used the following in Snowflake.
